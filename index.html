@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Llamar a Chino</title>
+<style>
+:root {
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  --bg: #101513;
+  --ink: #f1ece0;
+  --muted: #9fb0a5;
+  --ring: #f1ece0;
+}
+html, body { height: 100%; margin: 0; }
+body {
+  background: radial-gradient(circle at 50% 20%, #1e3328 0%, var(--bg) 70%);
+  color: var(--ink);
+  font-family: "Trebuchet MS", "Segoe UI", system-ui, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2.2rem;
+  padding: 1.5rem;
+  text-align: center;
+  overflow: hidden;
+}
+h1 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.8rem, 7vw, 2.6rem);
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+p { margin: 0.4rem 0 0; color: var(--muted); font-size: 1rem; }
+
+/* Efecto Liquid Glass */
+.call {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: min(72vw, 280px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  
+  /* Apariencia de vidrio translúcido */
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.05));
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  
+  color: #fff;
+  text-decoration: none;
+  font-size: clamp(1.4rem, 6vw, 1.9rem);
+  font-weight: 700;
+  line-height: 1.15;
+  
+  /* Sombreado profundo y brillo de cristal */
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.4),
+    inset 0 2px 6px rgba(255, 255, 255, 0.6),
+    inset 0 -8px 12px rgba(0, 0, 0, 0.2);
+    
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+  overflow: hidden;
+}
+
+/* Reflejo de luz líquido deslizándose constantemente */
+.call::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    60deg,
+    transparent 40%,
+    rgba(255, 255, 255, 0.25) 50%,
+    transparent 60%
+  );
+  transform: rotate(25deg);
+  animation: liquidShine 4s infinite linear;
+  pointer-events: none;
+}
+
+@keyframes liquidShine {
+  0% { transform: translateY(-100%) rotate(25deg); }
+  100% { transform: translateY(100%) rotate(25deg); }
+}
+
+.call:active {
+  transform: scale(0.95);
+  box-shadow: 
+    0 10px 20px rgba(0, 0, 0, 0.3),
+    inset 0 1px 3px rgba(255, 255, 255, 0.4),
+    inset 0 -4px 6px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(135deg, rgba(226, 69, 47, 0.5), rgba(158, 38, 22, 0.6));
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+.call:focus-visible { outline: 4px solid var(--ring); outline-offset: 6px; }
+.call span { position: relative; z-index: 2; display: block; }
+.call svg { width: 2.4rem; height: 2.4rem; margin: 0 auto 0.5rem; display: block; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3)); }
+</style>
+</head>
+<body>
+  <div>
+    <h1>¿Necesitás a Chino?</h1>
+    <p>Tocá el botón para abrir la llamada. Si no pasa nada, abrí esta página en Safari.</p>
+  </div>
+  <a class="call" id="callButton" href="tel:+5492212020425" aria-label="Llamar a Chino" onclick="window.location.href='tel:+5492212020425'; return false;">
+    <span>
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.6a1 1 0 0 1-.25 1z"/></svg>
+      Llamar a Chino
+    </span>
+  </a>
+</body>
+</html>
